@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +19,8 @@ namespace HockeyStars
 
         public TradingCard(Player selectedPlayer)
         {
+            //When the user double clicks on any player's name in the list on the Home Page,
+            //select that player to display on the Trading Card
             InitializeComponent();
             player = selectedPlayer;
             DisplayPlayerDetails();
@@ -26,23 +28,15 @@ namespace HockeyStars
 
         private void DisplayPlayerDetails()
         {
-            lblName.Text = $"{player.Name}";
-            lblTeam.Text = $"{player.Team}";
-            lblJersey.Text = $"{player.Jersey}";
-            lblBirthday.Text = $"{player.Birthday}";
-            lblPosition.Text = $"{player.Position}";
-            lblGames.Text = $"{player.Games}";
-            lblGoals.Text = $"{player.Goals}";
-            try
-            {
-                // Construct the path for the image file
-                string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, player.ImageName);
-                pbPlayer.Image = Image.FromFile(imagePath);  // Use pbPlayer to load the image
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to load image: {ex.Message}");
-            }
+            //Display the information for the selected player's stats on the Trading Card 
+                lblName.Text = $"{player.Name}";
+                lblTeam.Text = $"{player.Team}";
+                lblJersey.Text = $"{player.Jersey}";
+                lblBirthday.Text = $"{player.Birthday}";
+                lblPosition.Text = $"{player.Position}";
+                lblGames.Text = $"{player.Games}";
+                lblGoals.Text = $"{player.Goals}";
+                pbPlayer.Image = Image.FromFile(player.ImageName);
         }
     }
 }
